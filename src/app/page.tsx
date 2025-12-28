@@ -71,22 +71,20 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Link href="/book">
-                  <button className="btn-playful group relative px-8 py-4 rounded-2xl text-white font-semibold text-lg overflow-hidden transition-all animate-scale-in"
-                          style={{
-                            background: 'var(--gradient-primary)',
-                            boxShadow: 'var(--shadow-xl)',
-                            animationDelay: '500ms'
-                          }}
-                          onMouseEnter={(e) => e.currentTarget.classList.add('animate-bounce')}
-                          onAnimationEnd={(e) => e.currentTarget.classList.remove('animate-bounce')}>
-                    <span className="relative z-10 flex items-center justify-center gap-2">
-                      Get Instant Estimate
-                      <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </span>
-                  </button>
+                <Link href="/book" className="btn-playful group relative px-8 py-4 rounded-2xl text-white font-semibold text-lg overflow-hidden transition-all animate-scale-in inline-flex items-center justify-center no-underline"
+                      style={{
+                        background: 'var(--gradient-primary)',
+                        boxShadow: 'var(--shadow-xl)',
+                        animationDelay: '500ms'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.classList.add('animate-bounce')}
+                      onAnimationEnd={(e) => e.currentTarget.classList.remove('animate-bounce')}>
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Get Instant Estimate
+                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
                 </Link>
 
                 <button className="px-8 py-4 rounded-2xl font-semibold text-lg transition-all animate-scale-in card-lift"
@@ -205,22 +203,20 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-12" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
             Get your instant estimate and book your cleaning service today
           </p>
-          <Link href="/book">
-            <button className="btn-playful group px-10 py-5 rounded-2xl font-bold text-lg transition-all animate-heartbeat"
-                    style={{
-                      background: 'white',
-                      color: 'var(--color-primary-700)',
-                      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.classList.add('animate-bounce')}
-                    onAnimationEnd={(e) => e.currentTarget.classList.remove('animate-bounce')}>
-              <span className="flex items-center justify-center gap-2">
-                Book Your Cleaning Now
-                <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </span>
-            </button>
+          <Link href="/book" className="btn-playful group px-10 py-5 rounded-2xl font-bold text-lg transition-all animate-heartbeat inline-flex items-center justify-center no-underline"
+                style={{
+                  background: 'white',
+                  color: 'var(--color-primary-700)',
+                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)'
+                }}
+                onMouseEnter={(e) => e.currentTarget.classList.add('animate-bounce')}
+                onAnimationEnd={(e) => e.currentTarget.classList.remove('animate-bounce')}>
+            <span className="flex items-center justify-center gap-2">
+              Book Your Cleaning Now
+              <svg className="w-5 h-5 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
           </Link>
         </div>
       </section>

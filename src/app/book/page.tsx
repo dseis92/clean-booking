@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { PRICING, estimateCommercial, estimateResidential } from "@/lib/pricing";
 import Link from "next/link";
+import { MapboxAddressInput } from "@/components/mapbox/MapboxAddressInput";
 
 type BookingType = "residential" | "commercial";
 type CleanLevel = "light" | "standard" | "heavy" | "deepReset";
@@ -18,7 +19,8 @@ export default function BookPage() {
 
   // Shared
   const [addressText, setAddressText] = useState("");
-  const [distanceMiles, setDistanceMiles] = useState<number>(0); // MVP: manual; later Google Places + Distance Matrix
+  const [distanceMiles, setDistanceMiles] = useState<number>(0);
+  const [selectedCoordinates, setSelectedCoordinates] = useState<[number, number] | null>(null);
   const [bookingType, setBookingType] = useState<BookingType>("residential");
   const [cleanLevel, setCleanLevel] = useState<CleanLevel>("standard");
   const [afterHours, setAfterHours] = useState(false);
@@ -241,37 +243,18 @@ export default function BookPage() {
                     Where should we clean?
                   </h2>
                   <p className="text-base" style={{ color: 'rgba(26, 26, 26, 0.5)' }}>
-                    Enter your service location
+                    Search for your address and see if you're in our service area
                   </p>
                 </div>
-                <input
-                  className="w-full rounded-2xl border-2 border-zinc-200 px-5 py-4 text-lg input-fun transition-all outline-none bg-zinc-50 focus:bg-white"
-                  style={{
-                    borderColor: addressText ? 'var(--color-primary-400)' : 'rgba(20, 184, 154, 0.2)',
-                    boxShadow: addressText ? 'var(--shadow-glow)' : 'none'
-                  }}
-                  placeholder="123 Main St, City, State"
+                <MapboxAddressInput
                   value={addressText}
-                  onChange={(e) => setAddressText(e.target.value)}
-                  onFocus={(e) => e.target.classList.add('animate-wiggle')}
-                  onAnimationEnd={(e) => e.target.classList.remove('animate-wiggle')}
+                  distance={distanceMiles}
+                  onAddressChange={(address, coordinates) => {
+                    setAddressText(address);
+                    setSelectedCoordinates(coordinates);
+                  }}
+                  onDistanceChange={(miles) => setDistanceMiles(miles)}
                 />
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <div>
-                    <label className="text-sm font-medium text-zinc-700 mb-2 block">Distance (miles) — MVP manual</label>
-                    <input
-                      type="number"
-                      min={0}
-                      max={50}
-                      className="w-full rounded-xl border-2 border-zinc-200 px-4 py-3 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 transition-all outline-none bg-zinc-50 focus:bg-white"
-                      value={distanceMiles}
-                      onChange={(e) => setDistanceMiles(Number(e.target.value))}
-                    />
-                  </div>
-                  <div className="text-sm text-zinc-600 md:pt-6 bg-gradient-to-br from-emerald-50 to-teal-50 px-4 py-3 rounded-xl border border-emerald-200">
-                    Service radius: <span className="font-semibold text-emerald-700">50 mi</span>
-                  </div>
-                </div>
               </section>
             )}
 
